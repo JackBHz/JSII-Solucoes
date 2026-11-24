@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento — JSII Jack Soluções em Informática e Instalações</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --bg-card: #0e1525;
+      --bg-card-hover: #141e33;
+      --border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --orange: #ff6b00;
+      --orange-hover: #e55e00;
+      --blue: #2563eb;
+      --blue-light: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .logo-title span {
+      color: var(--blue-light);
+    }
+
+    .logo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    nav ul a:hover, nav ul a.active {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background: #1d4ed8;
+    }
+
+    /* PAGE HERO */
+    .calc-hero {
+      padding: 64px 0 36px;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 21, 37, 0.9);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    .calc-hero h1 {
+      font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      max-width: 780px;
+      margin-bottom: 16px;
+    }
+
+    .calc-hero p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 680px;
+    }
+
+    /* ÁREA DO SIMULADOR + FORMULÁRIO */
+    .calc-section {
+      padding: 24px 0 90px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .sim-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .sim-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--orange);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .sim-card h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 26px;
+    }
+
+    .slider-group {
+      margin-bottom: 22px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+    }
+
+    .slider-label {
+      color: #e2e8f0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slider-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--blue-light);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--orange);
+      cursor: pointer;
+      height: 6px;
+    }
+
+    .estimate-box {
+      background: rgba(7, 11, 20, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 22px;
+      margin-top: 26px;
+    }
+
+    .estimate-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .estimate-price {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .estimate-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--blue-light);
+      margin-top: 6px;
+    }
+
+    .estimate-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* COLUNA FORMULÁRIO ESCRITO */
+    .written-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .written-card h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .written-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 13px 15px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      transition: 0.2s;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--blue-light);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #05080f;
+      padding: 60px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--orange);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+
+    .wpp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 900px) {
+      .calc-grid, .form-row, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul, .nav-actions .btn-outline {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-title">JS<span>II</span></span>
+        <span class="logo-sub">Soluções Técnicas</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="orcamento.html" class="active">Orçamento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="contato.html" class="btn btn-blue">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TÍTULO -->
+  <section class="calc-hero">
+    <div class="container">
+      <div class="badge-tag">
+        <span class="badge-dot"></span>
+        CALCULADORA DE ORÇAMENTO
+      </div>
+
+      <h1>Monte o escopo, veja a estimativa e envie em 1 clique.</h1>
+
+      <p>
+        Combine quantas frentes quiser — 4 câmeras + 6 pontos de rede + reforma do quadro elétrico — e a simulação já vai montada para o WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  <!-- SIMULADOR + FORMULÁRIO ESCRITO -->
+  <section class="calc-section">
+    <div class="container calc-grid">
+
+      <!-- SIMULADOR -->
+      <div class="sim-card">
+        <span class="sim-kicker">SIMULADOR DE ORÇAMENTO</span>
+        <h2>Monte seu escopo e veja a estimativa</h2>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">🖧 Pontos de rede Cat6</span>
+            <span class="slider-value" id="val-rede">4 uns</span>
+          </div>
+          <input type="range" id="range-rede" min="0" max="30" value="4" oninput="calcular()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">📹 Câmeras CFTV IP</span>
+            <span class="slider-value" id="val-cftv">2 uns</span>
+          </div>
+          <input type="range" id="range-cftv" min="0" max="24" value="2" oninput="calcular()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">⚡ Pontos elétricos / tomadas</span>
+            <span class="slider-value" id="val-eletrica">0 uns</span>
+          </div>
+          <input type="range" id="range-eletrica" min="0" max="30" value="0" oninput="calcular()">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">🖥️ Manutenção de computadores</span>
+            <span class="slider-value" id="val-pc">0 uns</span>
+          </div>
+          <input type="range" id="range-pc" min="0" max="15" value="0" oninput="calcular()">
+        </div>
+
+        <div class="estimate-box">
+          <span class="estimate-kicker">ESTIMATIVA DO SERVIÇO</span>
+          <div class="estimate-price" id="resultado-preco">R$ 1.278 — R$ 1.633</div>
+          <div class="estimate-meta" id="resultado-tempo">~ 4.8 h de execução · garantia incluída</div>
+          <p class="estimate-note">
+            Valor de referência gerado no site. O preço final é confirmado pelo Jack após a vistoria técnica — sem compromisso.
+          </p>
+        </div>
+
+        <button class="btn btn-orange" style="width: 100%; margin-top: 20px; padding: 15px;" onclick="enviarSimulacaoWhatsApp()">
+          ➤ ENVIAR SIMULAÇÃO NO WHATSAPP
+        </button>
+      </div>
+
+      <!-- FORMULÁRIO POR ESCRITO -->
+      <div class="written-card">
+        <h2>Prefere detalhar por escrito?</h2>
+
+        <form class="written-form" onsubmit="enviarEscritoWhatsApp(event)">
+          <div class="form-row">
+            <div>
+              <label for="nome">NOME *</label>
+              <input type="text" id="nome" placeholder="Seu nome" required>
+            </div>
+            <div>
+              <label for="whatsapp">WHATSAPP *</label>
+              <input type="text" id="whatsapp" placeholder="(31) 98344-0522" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">E-MAIL</label>
+              <input type="email" id="email" placeholder="voce@email.com">
+            </div>
+            <div>
+              <label for="bairro">CIDADE / BAIRRO</label>
+              <input type="text" id="bairro" placeholder="Onde o serviço será feito">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="servico">SERVIÇO *</label>
+              <select id="servico">
+                <option>Redes &amp; Cabeamento Estruturado</option>
+                <option>CFTV Digital &amp; Segurança</option>
+                <option>Elétrica Residencial &amp; Quadros</option>
+                <option>Informática &amp; Suporte TI</option>
+                <option>Instalações Técnicas Gerais</option>
+                <option>Outro / Não sei informar</option>
+              </select>
+            </div>
+            <div>
+              <label for="urgencia">URGÊNCIA</label>
+              <select id="urgencia">
+                <option>Normal</option>
+                <option>Urgente</option>
+                <option>Agendar visita</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="mensagem">MENSAGEM</label>
+            <textarea id="mensagem" rows="5" placeholder="Descreva o que você precisa: quantas câmeras, pontos de rede, o que está acontecendo com a instalação elétrica…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-blue" style="width: 100%; padding: 15px;">
+            ➤ SOLICITAR ORÇAMENTO
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 12px;">
+            <span class="logo-title">JS<span>II</span></span>
+            <span class="logo-sub">Soluções Técnicas</span>
+          </div>
+          <p>Jack Soluções em Informática e Instalações. Redes, CFTV digital, elétrica residencial e instalações técnicas com padrão de engenharia.</p>
+        </div>
+
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="redes.html">Redes &amp; Cabeamento Estruturado</a></li>
+            <li><a href="cftv.html">CFTV Digital &amp; Segurança</a></li>
+            <li><a href="eletrica.html">Elétrica Residencial &amp; Quadros</a></li>
+            <li><a href="informatica.html">Informática &amp; Suporte TI</a></li>
+            <li><a href="instalacoes.html">Instalações Técnicas Gerais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>NAVEGUE</h4>
+          <ul>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="servicos.html">Todos os serviços</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="orcamento.html">Calculadora de orçamento</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>FALE COM A JSII</h4>
+          <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">+55 (31) 98344-0522</p>
+          <p style="margin-bottom: 12px;">contato@jsii.com.br</p>
+          <p style="font-size: 0.8rem;">Atendemos Belo Horizonte MG e região metropolitana — residências, comércios e empresas.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 JSII — Jack Soluções em Informática e Instalações</span>
+        <a href="https://wa.me/5531983440522" target="_blank" style="color: var(--orange); font-weight: 600;">
+          Fale com o Jack no WhatsApp agora →
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Preciso%20de%20um%20or%C3%A7amento." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+    💬
+  </a>
+
+  <script>
+    const TELEFONE_JACK = "5531983440522";
+
+    function formatBRL(val) {
+      return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+    }
+
+    function calcular() {
+      const rede = parseInt(document.getElementById('range-rede').value, 10);
+      const cftv = parseInt(document.getElementById('range-cftv').value, 10);
+      const eletrica = parseInt(document.getElementById('range-eletrica').value, 10);
+      const pc = parseInt(document.getElementById('range-pc').value, 10);
+
+      document.getElementById('val-rede').innerText = `${rede} uns`;
+      document.getElementById('val-cftv').innerText = `${cftv} uns`;
+      document.getElementById('val-eletrica').innerText = `${eletrica} uns`;
+      document.getElementById('val-pc').innerText = `${pc} uns`;
+
+      const min = (rede * 180) + (cftv * 279) + (eletrica * 140) + (pc * 150);
+      const max = Math.round(min * 1.278);
+      const horas = ((rede * 0.6) + (cftv * 1.2) + (eletrica * 0.5) + (pc * 0.8)).toFixed(1);
+
+      document.getElementById('resultado-preco').innerText = `${formatBRL(min)} — ${formatBRL(max)}`;
+      document.getElementById('resultado-tempo').innerText = `~ ${horas} h de execução · garantia incluída`;
+    }
+
+    function enviarSimulacaoWhatsApp() {
+      const rede = document.getElementById('range-rede').value;
+      const cftv = document.getElementById('range-cftv').value;
+      const eletrica = document.getElementById('range-eletrica').value;
+      const pc = document.getElementById('range-pc').value;
+      const estimativa = document.getElementById('resultado-preco').innerText;
+
+      const msg = `Olá Jack! Fiz uma simulação no site da JSII:\n` +
+        `• Pontos de rede Cat6: ${rede}\n` +
+        `• Câmeras CFTV IP: ${cftv}\n` +
+        `• Pontos elétricos / tomadas: ${eletrica}\n` +
+        `• Manutenção de computadores: ${pc}\n` +
+        `*Estimativa:* ${estimativa}`;
+
+      window.open(`https://wa.me/${TELEFONE_JACK}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function enviarEscritoWhatsApp(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const wpp = document.getElementById('whatsapp').value;
+      const email = document.getElementById('email').value;
+      const bairro = document.getElementById('bairro').value;
+      const servico = document.getElementById('servico').value;
+      const urgencia = document.getElementById('urgencia').value;
+      const msg = document.getElementById('mensagem').value;
+
+      const texto = `Olá Jack! Solicitação de orçamento pelo site:\n` +
+        `*Nome:* ${nome}\n` +
+        `*WhatsApp:* ${wpp}\n` +
+        `*E-mail:* ${email || 'Não informado'}\n` +
+        `*Local:* ${bairro || 'Não informado'}\n` +
+        `*Serviço:* ${servico}\n` +
+        `*Urgência:* ${urgencia}\n` +
+        `*Detalhes:* ${msg || 'Sem observações adicionais'}`;
+
+      window.open(`https://wa.me/${TELEFONE_JACK}?text=${encodeURIComponent(texto)}`, '_blank');
+    }
+
+    calcular();
+  </script>
+
+</body>
+</html>
