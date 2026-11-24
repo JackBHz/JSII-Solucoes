@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serviços — JSII Jack Soluções em Informática e Instalações</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --bg-card: #0e1525;
+      --bg-card-hover: #141e33;
+      --border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --orange: #ff6b00;
+      --orange-hover: #e55e00;
+      --blue: #2563eb;
+      --blue-light: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .logo-title span {
+      color: var(--blue-light);
+    }
+
+    .logo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    nav ul a:hover, nav ul a.active {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background: #1d4ed8;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 72px 0 48px;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 21, 37, 0.9);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.1rem);
+      font-weight: 900;
+      line-height: 1.08;
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span {
+      color: var(--blue-light);
+    }
+
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+    }
+
+    /* SERVICE SHOWCASE CARDS */
+    .services-list {
+      display: grid;
+      gap: 32px;
+      padding-bottom: 80px;
+    }
+
+    .service-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.95fr 1.25fr;
+      transition: 0.25s ease;
+    }
+
+    .service-row:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: var(--bg-card-hover);
+    }
+
+    .service-img {
+      min-height: 320px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border-right: 1px solid var(--border);
+    }
+
+    .service-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(7, 11, 20, 0.15), rgba(14, 21, 37, 0.7));
+    }
+
+    .service-body {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .service-kicker {
+      display: inline-block;
+      align-self: flex-start;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--blue-light);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .service-body h2 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .service-body > p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 20px;
+    }
+
+    .service-bullets {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 18px;
+      margin-bottom: 26px;
+    }
+
+    .service-bullets li {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .service-bullets li::before {
+      content: "✓";
+      color: var(--blue-light);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .service-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* MODAL DE DETALHES */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 15, 0.85);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 560px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    .modal-box h3 {
+      font-size: 1.4rem;
+      margin: 10px 0 12px;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      margin-bottom: 18px;
+    }
+
+    .modal-box ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+    }
+
+    .modal-box ul li::before {
+      content: "▸ ";
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* TICKER */
+    .ticker {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #05080f;
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .ticker span {
+      color: var(--orange);
+      margin: 0 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #05080f;
+      padding: 60px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--orange);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+
+    .wpp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 900px) {
+      .service-row, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .service-img {
+        min-height: 220px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .service-bullets {
+        grid-template-columns: 1fr;
+      }
+      nav ul, .nav-actions .btn-outline {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-title">JS<span>II</span></span>
+        <span class="logo-sub">Soluções Técnicas</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="servicos.html" class="active">Serviços</a></li>
+          <li><a href="index.html#sobre">Sobre Nós</a></li>
+          <li><a href="index.html#orcamento">Orçamento</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20JSII." target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="index.html#contato" class="btn btn-blue">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO DA PÁGINA DE SERVIÇOS -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="badge-tag">
+        <span class="badge-dot"></span>
+        SERVIÇOS JSII
+      </div>
+
+      <h1>
+        Uma equipe técnica, <span>todas as frentes.</span>
+      </h1>
+
+      <p>
+        Da tomada ao data center: escolha o que você precisa e a gente resolve — com diagnóstico, normas e garantia. Atendemos residências, comércios e empresas de Belo Horizonte e região metropolitana.
+      </p>
+    </div>
+  </section>
+
+  <!-- LISTA DETALHADA DOS 5 SERVIÇOS -->
+  <section>
+    <div class="container services-list">
+
+      <!-- 1. REDES -->
+      <article id="redes" class="service-row">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="service-body">
+          <span class="service-kicker">CAT6 / CAT6A / RACKS</span>
+          <h2>Redes &amp; Cabeamento Estruturado</h2>
+          <p>Projetos de rede para empresas e residências: racks 19", patch panels, pontos Cat6/Cat6A e Wi-Fi de alta densidade.</p>
+          <ul class="service-bullets">
+            <li>Montagem e organização de racks e patch panels</li>
+            <li>Pontos de rede Cat6/Cat6A prontos para certificação</li>
+            <li>Organização de cabos e conectores de rede</li>
+            <li>Wi-Fi mesh de alta densidade, VLANs e firewalls</li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" onclick="abrirDetalhes('redes')">Ver Detalhes</button>
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Redes%20%26%20Cabeamento%20Estruturado." target="_blank" class="btn btn-orange">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. CFTV -->
+      <article id="cftv" class="service-row">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="service-body">
+          <span class="service-kicker">IP · 4K · IA</span>
+          <h2>CFTV Digital &amp; Segurança</h2>
+          <p>Vigilância IP inteligente: câmeras 4K com visão noturna colorida, gravação em NVR, detecção por IA e acesso ao vivo de qualquer lugar.</p>
+          <ul class="service-bullets">
+            <li>Câmeras IP 4K com detecção inteligente de movimento</li>
+            <li>Visão noturna colorida 24 horas</li>
+            <li>NVR com acesso remoto seguro pelo celular</li>
+            <li>Cabeamento protegido e energia de backup</li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" onclick="abrirDetalhes('cftv')">Ver Detalhes</button>
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20CFTV%20Digital%20%26%20Seguran%C3%A7a." target="_blank" class="btn btn-orange">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. ELÉTRICA -->
+      <article id="eletrica" class="service-row">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="service-body">
+          <span class="service-kicker">NBR 5410</span>
+          <h2>Elétrica Residencial &amp; Quadros</h2>
+          <p>Instalações e reformas elétricas dentro da norma ABNT NBR 5410: quadros de distribuição, DR, DPS, circuitos dedicados e iluminação.</p>
+          <ul class="service-bullets">
+            <li>Modernização de quadros com DR e DPS</li>
+            <li>Circuitos dedicados para ar-condicionado e chuveiro</li>
+            <li>Troca de fiação antiga e eliminação de aquecimentos</li>
+            <li>Iluminação arquitetônica e tomadas no ponto certo</li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" onclick="abrirDetalhes('eletrica')">Ver Detalhes</button>
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20El%C3%A9trica%20Residencial%20%26%20Quadros." target="_blank" class="btn btn-orange">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. INFORMÁTICA -->
+      <article id="ti" class="service-row">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="service-body">
+          <span class="service-kicker">HARDWARE &amp; SOFT</span>
+          <h2>Informática &amp; Suporte TI</h2>
+          <p>Manutenção preventiva e corretiva de desktops e notebooks, upgrades de performance, montagem de setups e limpeza de malware.</p>
+          <ul class="service-bullets">
+            <li>Manutenção preventiva e limpeza completa</li>
+            <li>Upgrades de SSD NVMe, memória RAM e repaste térmico</li>
+            <li>Montagem de servidores, workstations e setups</li>
+            <li>Remoção de malware e hardening de sistema</li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" onclick="abrirDetalhes('ti')">Ver Detalhes</button>
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Inform%C3%A1tica%20%26%20Suporte%20TI." target="_blank" class="btn btn-orange">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. INSTALAÇÕES GERAIS -->
+      <article id="instalacoes" class="service-row">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80');"></div>
+        <div class="service-body">
+          <span class="service-kicker">FIXAÇÃO &amp; ACABAMENTO</span>
+          <h2>Instalações Técnicas Gerais</h2>
+          <p>Fixação nivelada a laser de TVs e suportes, eletrodutos e calhas técnicas, fechaduras digitais, campainhas e passagem embutida de cabos.</p>
+          <ul class="service-bullets">
+            <li>Instalação de fechaduras eletrônicas e biometria</li>
+            <li>Suportes de TV articulados nivelados a laser</li>
+            <li>Eletrodutos aparentes e calhas técnicas organizadas</li>
+            <li>Passagem embutida de cabos sem fios aparentes</li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" onclick="abrirDetalhes('instalacoes')">Ver Detalhes</button>
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Instala%C3%A7%C3%B5es%20T%C3%A9cnicas%20Gerais." target="_blank" class="btn btn-orange">WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FAIXA TICKER -->
+  <div class="ticker">
+    <div class="container">
+      REDES ESTRUTURADAS <span>//</span> CFTV DIGITAL <span>//</span> ELÉTRICA RESIDENCIAL <span>//</span> MANUTENÇÃO TI <span>//</span> WI-FI CORPORATIVO <span>//</span> INSTALAÇÕES TÉCNICAS
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 12px;">
+            <span class="logo-title">JS<span>II</span></span>
+            <span class="logo-sub">Soluções Técnicas</span>
+          </div>
+          <p>Jack Soluções em Informática e Instalações. Redes, CFTV digital, elétrica residencial e instalações técnicas com padrão de engenharia.</p>
+        </div>
+
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="#redes">Redes &amp; Cabeamento Estruturado</a></li>
+            <li><a href="#cftv">CFTV Digital &amp; Segurança</a></li>
+            <li><a href="#eletrica">Elétrica Residencial &amp; Quadros</a></li>
+            <li><a href="#ti">Informática &amp; Suporte TI</a></li>
+            <li><a href="#instalacoes">Instalações Técnicas Gerais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>NAVEGUE</h4>
+          <ul>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="servicos.html">Todos os serviços</a></li>
+            <li><a href="index.html#sobre">Sobre nós</a></li>
+            <li><a href="index.html#orcamento">Calculadora de orçamento</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>FALE COM A JSII</h4>
+          <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">+55 (31) 98344-0522</p>
+          <p style="margin-bottom: 12px;">contato@jsii.com.br</p>
+          <p style="font-size: 0.8rem;">Atendemos Belo Horizonte MG e região metropolitana — residências, comércios e empresas.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 JSII — Jack Soluções em Informática e Instalações</span>
+        <a href="https://wa.me/5531983440522" target="_blank" style="color: var(--orange); font-weight: 600;">
+          Fale com o Jack no WhatsApp agora →
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE DETALHES TÉCNICOS -->
+  <div id="modal-detalhes" class="modal-backdrop" onclick="fecharModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="fecharModal()">✕</button>
+      <span id="modal-kicker" class="service-kicker"></span>
+      <h3 id="modal-titulo"></h3>
+      <p id="modal-desc"></p>
+      <ul id="modal-lista"></ul>
+      <a id="modal-wpp" href="#" target="_blank" class="btn btn-orange" style="width: 100%;">
+        Solicitar Orçamento deste Serviço no WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Preciso%20de%20um%20or%C3%A7amento." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+    💬
+  </a>
+
+  <script>
+    const DADOS_SERVICOS = {
+      redes: {
+        kicker: "CAT6 / CAT6A / RACKS",
+        titulo: "Redes & Cabeamento Estruturado",
+        desc: "Infraestrutura lógica projetada para máxima estabilidade, baixa latência e organização visual impecável.",
+        itens: [
+          "Identificação e anilhamento de todos os cabos e portas",
+          "Montagem de Racks 19\" de parede ou piso com guias de cabos",
+          "Teste de continuidade e mapeamento ponto a ponto",
+          "Configuração de roteadores, switches gerenciáveis e Access Points"
+        ],
+        wpp: "Olá Jack! Gostaria de detalhes e orçamento para Redes & Cabeamento Estruturado."
+      },
+      cftv: {
+        kicker: "IP · 4K · IA",
+        titulo: "CFTV Digital & Segurança",
+        desc: "Monitoramento em alta definição com gravação contínua ou por eventos inteligentes e alertas direto no smartphone.",
+        itens: [
+          "Câmeras IP PoE ou HD com proteção contra
