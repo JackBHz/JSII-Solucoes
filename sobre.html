@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós — JSII Jack Soluções em Informática e Instalações</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --bg-card: #0e1525;
+      --bg-card-hover: #141e33;
+      --border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --orange: #ff6b00;
+      --orange-hover: #e55e00;
+      --blue: #2563eb;
+      --blue-light: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .logo-title span {
+      color: var(--blue-light);
+    }
+
+    .logo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    nav ul a:hover, nav ul a.active {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-orange:hover {
+      background: var(--orange-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background: #1d4ed8;
+    }
+
+    /* HERO SOBRE */
+    .about-hero {
+      padding: 72px 0 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 21, 37, 0.9);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.1rem);
+      font-weight: 900;
+      line-height: 1.06;
+      max-width: 780px;
+      margin-bottom: 36px;
+    }
+
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* SEÇÕES INTERNAS */
+    section.content-sec {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sec-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--orange);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .sec-heading {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 36px;
+    }
+
+    /* OS 5 PILARES */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 22px;
+      transition: 0.25s;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--blue-light);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .pillar-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue-light);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .pillar-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* FERRAMENTAL */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .tool-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      transition: 0.2s;
+    }
+
+    .tool-item:hover {
+      border-color: rgba(255, 107, 0, 0.45);
+      background: var(--bg-card-hover);
+    }
+
+    .tool-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255, 107, 0, 0.12);
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      color: var(--orange);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* CTA FINAL */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), var(--bg-card));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #05080f;
+      padding: 60px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--orange);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+
+    .wpp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 1024px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-story-grid, .tools-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul, .nav-actions .btn-outline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-banner {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-title">JS<span>II</span></span>
+        <span class="logo-sub">Soluções Técnicas</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="sobre.html" class="active">Sobre Nós</a></li>
+          <li><a href="index.html#orcamento">Orçamento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="contato.html" class="btn btn-blue">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SOBRE -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="badge-tag">
+        <span class="badge-dot"></span>
+        SOBRE A JSII
+      </div>
+
+      <h1>A JSII nasceu para acabar com a gambiarra.</h1>
+
+      <div class="about-story-grid">
+        <p>
+          Toda instalação malfeita cobra o preço depois: a tomada que esquenta, a câmera que não enxerga o que importa, a rede que cai no horário de pico. A JSII — Jack Soluções em Informática e Instalações — existe para resolver isso de uma vez, do jeito certo.
+        </p>
+        <p>
+          Liderada pelo Jack, a equipe une rigor técnico e atendimento direto: quem faz o orçamento é quem executa o serviço. Sem intermediários, sem promessa vaga — com norma, teste e garantia em cada entrega. E tudo com aquele jeito amigável de atender, do primeiro "oi" no WhatsApp até o serviço entregue.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OS 5 PILARES -->
+  <section class="content-sec">
+    <div class="container">
+      <h2 class="sec-heading">Os 5 pilares da execução JSII</h2>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-num">01</span>
+          <h3>Segurança primeiro</h3>
+          <p>Desligamento seguro, EPI e proteção do ambiente antes de qualquer intervenção.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">02</span>
+          <h3>Normas ABNT</h3>
+          <p>Execução elétrica seguindo a NBR 5410 e boas práticas internacionais de rede.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">03</span>
+          <h3>Zero gambiarra</h3>
+          <p>Nada de emendas provisórias, fios soltos ou soluções que viram problema depois.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">04</span>
+          <h3>Garantia em cada serviço</h3>
+          <p>Todo trabalho sai testado, com garantia e respaldo para ajustes futuros.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-num">05</span>
+          <h3>Documentação técnica</h3>
+          <p>Relatório do que foi feito, dos materiais usados e de como ampliar depois.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FERRAMENTAL -->
+  <section class="content-sec">
+    <div class="container">
+      <span class="sec-kicker">FERRAMENTAL</span>
+      <h2 class="sec-heading">O serviço certo começa pela ferramenta certa.</h2>
+
+      <div class="tools-grid">
+        <div class="tool-item">
+          <span class="tool-icon">🔌</span>
+          <span>Testadores de cabos e conectores de precisão</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">📐</span>
+          <span>Nível a laser e marcação milimétrica</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">⚡</span>
+          <span>Instrumentos de medição e teste elétrico</span>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🛠️</span>
+          <span>Ferramentas de bancada para TI e repaste</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONVERSA -->
+  <section class="content-sec" style="border-bottom: none;">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Vamos conversar sobre o seu projeto?</h2>
+          <p>Orçamento sem compromisso, vistoria técnica e resposta direto no seu WhatsApp.</p>
+        </div>
+        <a href="contato.html" class="btn btn-orange">
+          Falar com a JSII →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 12px;">
+            <span class="logo-title">JS<span>II</span></span>
+            <span class="logo-sub">Soluções Técnicas</span>
+          </div>
+          <p>Jack Soluções em Informática e Instalações. Redes, CFTV digital, elétrica residencial e instalações técnicas com padrão de engenharia.</p>
+        </div>
+
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="redes.html">Redes &amp; Cabeamento Estruturado</a></li>
+            <li><a href="cftv.html">CFTV Digital &amp; Segurança</a></li>
+            <li><a href="eletrica.html">Elétrica Residencial &amp; Quadros</a></li>
+            <li><a href="informatica.html">Informática &amp; Suporte TI</a></li>
+            <li><a href="instalacoes.html">Instalações Técnicas Gerais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>NAVEGUE</h4>
+          <ul>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="servicos.html">Todos os serviços</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="index.html#orcamento">Calculadora de orçamento</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>FALE COM A JSII</h4>
+          <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">+55 (31) 98344-0522</p>
+          <p style="margin-bottom: 12px;">contato@jsii.com.br</p>
+          <p style="font-size: 0.8rem;">Atendemos Belo Horizonte MG e região metropolitana — residências, comércios e empresas.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 JSII — Jack Soluções em Informática e Instalações</span>
+        <a href="https://wa.me/5531983440522" target="_blank" style="color: var(--orange); font-weight: 600;">
+          Fale com o Jack no WhatsApp agora →
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Preciso%20de%20um%20or%C3%A7amento." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+    💬
+  </a>
+
+</body>
+</html>
