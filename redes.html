@@ -47,7 +47,6 @@
       padding: 0 20px;
     }
 
-    /* HEADER / NAVBAR */
     header {
       position: sticky;
       top: 0;
@@ -160,7 +159,6 @@
       background: #1d4ed8;
     }
 
-    /* HERO DO SERVIÇO */
     .service-hero {
       padding: 56px 0 64px;
       border-bottom: 1px solid var(--border);
@@ -231,7 +229,6 @@
       background-position: center;
     }
 
-    /* SEÇÕES INTERNAS */
     section.content-sec {
       padding: 64px 0;
       border-bottom: 1px solid var(--border);
@@ -243,7 +240,6 @@
       margin-bottom: 32px;
     }
 
-    /* O QUE ENTREGAMOS */
     .deliverables-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -283,7 +279,6 @@
       flex-shrink: 0;
     }
 
-    /* COMO EXECUTAMOS (01 - 04) */
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -310,7 +305,6 @@
       -webkit-text-stroke: 1.5px var(--blue-light);
       display: block;
       margin-bottom: 18px;
-      font-family: 'Inter', sans-serif;
     }
 
     .step-card p {
@@ -319,7 +313,6 @@
       font-weight: 500;
     }
 
-    /* OUTRAS FRENTES */
     .other-links {
       display: flex;
       flex-wrap: wrap;
@@ -342,7 +335,6 @@
       background: var(--bg-card-hover);
     }
 
-    /* FOOTER */
     footer {
       background: #05080f;
       padding: 60px 0 30px;
@@ -360,4 +352,242 @@
     footer h4 {
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
-      font
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--orange);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+
+    .wpp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .deliverables-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      nav ul, .nav-actions .btn-outline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span class="logo-title">JS<span>II</span></span>
+          <span class="logo-sub">Soluções Técnicas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html" class="active">Serviços</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="orcamento.html">Orçamento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Redes%20%26%20Cabeamento%20Estruturado." target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="contato.html" class="btn btn-blue">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="service-hero">
+    <div class="container">
+      <div class="breadcrumb-row">
+        <a href="servicos.html" class="breadcrumb-link">← Todos os Serviços</a>
+        <span class="service-tag">CAT6 / CAT6A / RACKS</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>Redes &amp; Cabeamento Estruturado</h1>
+          <p>
+            Projetos de rede para empresas e residências: racks 19", patch panels, pontos Cat6/Cat6A e Wi-Fi de alta densidade.
+          </p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Redes%20%26%20Cabeamento%20Estruturado." target="_blank" class="btn btn-orange">
+              Orçamento no WhatsApp
+            </a>
+            <a href="contato.html" class="btn btn-outline">
+              Formulário Completo
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-photo" title="Redes &amp; Cabeamento Estruturado"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-sec">
+    <div class="container">
+      <h2 class="sec-heading">O que entregamos</h2>
+      <div class="deliverables-grid">
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Montagem e organização de racks e patch panels</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Pontos de rede Cat6/Cat6A prontos para certificação</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Organização de cabos e conectores de rede</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Wi-Fi mesh de alta densidade, VLANs e firewalls</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-sec">
+    <div class="container">
+      <h2 class="sec-heading">Como executamos</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <p>Mapeamento da planta e do tráfego</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <p>Passagem e conectorização dos cabos</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <p>Identificação e testes de cada ponto</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <p>Entrega com documentação as-built</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-sec" style="border-bottom: none;">
+    <div class="container">
+      <h2 class="sec-heading">Precisa de outra frente também?</h2>
+      <div class="other-links">
+        <a href="cftv.html" class="pill-link">CFTV Digital &amp; Segurança</a>
+        <a href="eletrica.html" class="pill-link">Elétrica Residencial &amp; Quadros</a>
+        <a href="informatica.html" class="pill-link">Informática &amp; Suporte TI</a>
+        <a href="instalacoes.html" class="pill-link">Instalações Técnicas Gerais</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 12px;">
+            <div class="logo-text">
+              <span class="logo-title">JS<span>II</span></span>
+              <span class="logo-sub">Soluções Técnicas</span>
+            </div>
+          </div>
+          <p>Jack Soluções em Informática e Instalações. Redes, CFTV digital, elétrica residencial e instalações técnicas com padrão de engenharia.</p>
+        </div>
+
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="redes.html">Redes &amp; Cabeamento Estruturado</a></li>
+            <li><a href="cftv.html">CFTV Digital &amp; Segurança</a></li>
+            <li><a href="eletrica.html">Elétrica Residencial &amp; Quadros</a></li>
+            <li><a href="informatica.html">Informática &amp; Suporte TI</a></li>
+            <li><a href="instalacoes.html">Instalações Técnicas Gerais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>NAVEGUE</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="servicos.html">Todos os serviços</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="orcamento.html">Calculadora de orçamento</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>FALE COM A JSII</h4>
+          <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">+55 (31) 98344-0522</p>
+          <p style="margin-bottom: 12px;">contato@jsii.com.br</p>
+          <p style="font-size: 0.8rem;">Atendemos Belo Horizonte MG e região metropolitana — residências, comércios e empresas.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 JSII — Jack Soluções em Informática e Instalações</span>
+        <a href="https://wa.me/5531983440522" target="_blank" style="color: var(--orange); font-weight: 600;">
+          Fale com o Jack no WhatsApp agora →
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Preciso%20de%20um%20or%C3%A7amento%20de%20Redes." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+    💬
+  </a>
+
+</body>
+</html>
