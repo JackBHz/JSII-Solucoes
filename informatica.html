@@ -179,3 +179,418 @@
     }
 
     .service-tag {
+      color: var(--blue-light);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .service-hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .service-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      max-width: 580px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-photo {
+      min-height: 330px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background-image: linear-gradient(to top, rgba(7,11,20,0.45), transparent),
+        url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* SEÇÕES INTERNAS */
+    section.content-sec {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sec-heading {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 32px;
+    }
+
+    /* O QUE ENTREGAMOS */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .deliverable-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: #e2e8f0;
+      transition: 0.2s;
+    }
+
+    .deliverable-item:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: var(--bg-card-hover);
+    }
+
+    .check-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--blue-light);
+      color: var(--blue-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* COMO EXECUTAMOS (01 - 04) */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: 0.25s;
+    }
+
+    .step-card:hover {
+      border-color: var(--blue-light);
+      transform: translateY(-3px);
+    }
+
+    .step-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--blue-light);
+      display: block;
+      margin-bottom: 18px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* OUTRAS FRENTES */
+    .other-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .pill-link {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .pill-link:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      background: var(--bg-card-hover);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #05080f;
+      padding: 60px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer ul a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--orange);
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+
+    .wpp-float:hover {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .deliverables-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      nav ul, .nav-actions .btn-outline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-title">JS<span>II</span></span>
+        <span class="logo-sub">Soluções Técnicas</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="servicos.html" class="active">Serviços</a></li>
+          <li><a href="index.html#sobre">Sobre Nós</a></li>
+          <li><a href="index.html#orcamento">Orçamento</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Inform%C3%A1tica%20%26%20Suporte%20TI." target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="contato.html" class="btn btn-blue">Solicitar Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO DO SERVIÇO -->
+  <section class="service-hero">
+    <div class="container">
+      <div class="breadcrumb-row">
+        <a href="servicos.html" class="breadcrumb-link">← Todos os Serviços</a>
+        <span class="service-tag">HARDWARE &amp; SOFT</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>Informática &amp; Suporte TI</h1>
+          <p>
+            Manutenção preventiva e corretiva de desktops e notebooks, upgrades de performance, montagem de setups e limpeza de malware.
+          </p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Inform%C3%A1tica%20%26%20Suporte%20TI." target="_blank" class="btn btn-orange">
+              Orçamento no WhatsApp
+            </a>
+            <a href="contato.html" class="btn btn-outline">
+              Formulário Completo
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-photo" title="Informática & Suporte TI"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE ENTREGAMOS -->
+  <section class="content-sec">
+    <div class="container">
+      <h2 class="sec-heading">O que entregamos</h2>
+      <div class="deliverables-grid">
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Manutenção preventiva e limpeza completa</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Upgrades de SSD NVMe, memória RAM e repaste térmico</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Montagem de servidores, workstations e setups</span>
+        </div>
+        <div class="deliverable-item">
+          <span class="check-circle">✓</span>
+          <span>Remoção de malware e hardening de sistema</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO EXECUTAMOS -->
+  <section class="content-sec">
+    <div class="container">
+      <h2 class="sec-heading">Como executamos</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <p>Diagnóstico de bancada</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <p>Orçamento transparente</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <p>Execução com testes de carga</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">04</span>
+          <p>Garantia e relatório técnico</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTRAS FRENTES -->
+  <section class="content-sec" style="border-bottom: none;">
+    <div class="container">
+      <h2 class="sec-heading">Precisa de outra frente também?</h2>
+      <div class="other-links">
+        <a href="redes.html" class="pill-link">Redes &amp; Cabeamento Estruturado</a>
+        <a href="cftv.html" class="pill-link">CFTV Digital &amp; Segurança</a>
+        <a href="eletrica.html" class="pill-link">Elétrica Residencial &amp; Quadros</a>
+        <a href="servicos.html#instalacoes" class="pill-link">Instalações Técnicas Gerais</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 12px;">
+            <span class="logo-title">JS<span>II</span></span>
+            <span class="logo-sub">Soluções Técnicas</span>
+          </div>
+          <p>Jack Soluções em Informática e Instalações. Redes, CFTV digital, elétrica residencial e instalações técnicas com padrão de engenharia.</p>
+        </div>
+
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="redes.html">Redes &amp; Cabeamento Estruturado</a></li>
+            <li><a href="cftv.html">CFTV Digital &amp; Segurança</a></li>
+            <li><a href="eletrica.html">Elétrica Residencial &amp; Quadros</a></li>
+            <li><a href="informatica.html">Informática &amp; Suporte TI</a></li>
+            <li><a href="servicos.html#instalacoes">Instalações Técnicas Gerais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>NAVEGUE</h4>
+          <ul>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="servicos.html">Todos os serviços</a></li>
+            <li><a href="index.html#sobre">Sobre nós</a></li>
+            <li><a href="index.html#orcamento">Calculadora de orçamento</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>FALE COM A JSII</h4>
+          <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">+55 (31) 98344-0522</p>
+          <p style="margin-bottom: 12px;">contato@jsii.com.br</p>
+          <p style="font-size: 0.8rem;">Atendemos Belo Horizonte MG e região metropolitana — residências, comércios e empresas.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 JSII — Jack Soluções em Informática e Instalações</span>
+        <a href="https://wa.me/5531983440522" target="_blank" style="color: var(--orange); font-weight: 600;">
+          Fale com o Jack no WhatsApp agora →
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="https://wa.me/5531983440522?text=Ol%C3%A1%20Jack!%20Preciso%20de%20suporte%20em%20Inform%C3%A1tica." target="_blank" class="wpp-float" title="Falar no WhatsApp">
+    💬
+  </a>
+
+</body>
+</html>
